@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_menu</class>
+ <widget class="QMainWindow" name="main_menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Главное Меню</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="exit_button">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>475</y>
+      <width>600</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выход</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="settings_button">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>325</y>
+      <width>600</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Настройки</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="notes_button">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>175</y>
+      <width>600</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Заметки</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="boards_button">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>25</y>
+      <width>600</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arduino</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
