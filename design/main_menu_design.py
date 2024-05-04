@@ -26,9 +26,6 @@ class Ui_main_menu(object):
         self.notes_button = QtWidgets.QPushButton(self.centralwidget)
         self.notes_button.setGeometry(QtCore.QRect(100, 175, 600, 100))
         self.notes_button.setObjectName("notes_button")
-        self.boards_button = QtWidgets.QPushButton(self.centralwidget)
-        self.boards_button.setGeometry(QtCore.QRect(100, 25, 600, 100))
-        self.boards_button.setObjectName("boards_button")
         main_menu.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(main_menu)
@@ -40,4 +37,3 @@ class Ui_main_menu(object):
         self.exit_button.setText(_translate("main_menu", "Выход"))
         self.settings_button.setText(_translate("main_menu", "Настройки"))
         self.notes_button.setText(_translate("main_menu", "Заметки"))
-        self.boards_button.setText(_translate("main_menu", "Arduino"))

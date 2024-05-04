@@ -20,6 +20,10 @@ class Ui_window(object):
         self.back_button = QtWidgets.QPushButton(self.centralwidget)
         self.back_button.setGeometry(QtCore.QRect(0, 0, 150, 50))
         self.back_button.setObjectName("back_button")
+        self.module_menu_button = QtWidgets.QPushButton(self.centralwidget)
+        self.module_menu_button.setEnabled(True)
+        self.module_menu_button.setGeometry(QtCore.QRect(60, 110, 150, 50))
+        self.module_menu_button.setObjectName("module_menu_button")
         window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(window)
@@ -29,3 +33,4 @@ class Ui_window(object):
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "Настройки"))
         self.back_button.setText(_translate("window", "Назад"))
+        self.module_menu_button.setText(_translate("window", "Управление модулями"))

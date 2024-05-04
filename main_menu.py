@@ -1,10 +1,11 @@
 import configparser
 import sys
 import os
-from PyQt5 import QtWidgets
+from os import walk
+from PyQt5 import QtWidgets,QtCore
 import settings_menu
 import notes_menu
-import boards
+import importlib.util
 import messagebox
 from design import main_menu_design
 
@@ -19,7 +20,6 @@ class Main_menu(QtWidgets.QMainWindow, main_menu_design.Ui_main_menu):
         memory_dir = f'{program_dir}/{config["Default_Dir"]["memory"]}' #адрес папки memory
         if os.path.exists(memory_dir):  # проверка существования папки памяти приложения
             #привязка функций
-            self.boards_button.clicked.connect(self.open_boards)
             self.notes_button.clicked.connect(self.open_notes)
             self.settings_button.clicked.connect(self.open_settings)
         else:
@@ -27,17 +27,31 @@ class Main_menu(QtWidgets.QMainWindow, main_menu_design.Ui_main_menu):
             self.boards_button.setEnabled(False)
             self.notes_button.setEnabled(False)
             self.settings_button.setEnabled(False)
+        #проверка модулей
+        #создавать кнопку для каждого модуля
+        filenames = next(walk(f"{os.path.dirname(os.path.abspath(__file__))}/modules"), (None, None, []))[2]
+        for file in filenames: 
+            name = file.split(".")[0]
+            self.button = QtWidgets.QPushButton(self.centralwidget)
+            self.button.setGeometry(QtCore.QRect(0, 0, 150, 50))
+            self.button.setObjectName(f"{file}")
+            self.button.setText(f"{name.upper()}")
+            self.button.clicked.connect(self.func)
         #привязка функций
         self.exit_button.clicked.connect(self.application_close)
-
-    def open_boards(self):
+    
+    def func(self):
         try:
-            self.form = boards.Connection_menu()
-            self.form.show()
+            file = self.sender().objectName()
+            name = file.split(".")[0]
+            print(file)
+            spec=importlib.util.spec_from_file_location(f"{name}",f"modules/{file}")
+            foo = importlib.util.module_from_spec(spec)
             self.close()
+            spec.loader.exec_module(foo)
+            foo.main()
         except Exception as e:
             messagebox.show_warning_messagebox(e)
-
 
     def open_notes(self):
         try:
